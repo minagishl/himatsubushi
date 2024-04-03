@@ -38,6 +38,26 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isStopped]);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Enter') {
+        if (!isStarted) {
+          start();
+        } else if (!isStopped) {
+          setIsStopped(true);
+        } else {
+          restart();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isStarted, isStopped]);
+
   return (
     <main
       className={`flex h-[100dvh] w-[100dvw] items-center justify-center font-sans ${OverusedGrotesk.className}`}
