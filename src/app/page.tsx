@@ -45,24 +45,28 @@ export default function Home() {
       <div className="flex h-[100dvh] w-full max-w-screen-sm flex-col items-center justify-center space-y-5 p-10">
         {!isStarted && (
           <div className="flex flex-col items-center justify-center space-y-3">
-            <h1 className="text-3xl font-semibold">Stop at exactly 10 seconds!</h1>
+            <h1 className="text-center text-3xl font-semibold">Stop at exactly 10 seconds!</h1>
             <Button onClick={start}>Start</Button>
           </div>
         )}
         {isStarted && (
           <div className="flex flex-col items-center justify-center space-y-3">
             {/* Now Time */}
-            <h1 className="p-5 text-6xl font-semibold">{time}</h1>
+            <h1 className="p-5 text-center text-6xl font-semibold">{time}</h1>
 
             {/* Time */}
             {isEnded && (
               <div>
                 {difference === 0 ? (
-                  <h1 className="text-xl font-semibold">You stopped at exactly 10 seconds!</h1>
+                  <h1 className="text-center text-xl font-semibold">You stopped at exactly 10 seconds!</h1>
                 ) : difference > 0.1 ? (
-                  <h1 className="text-xl font-semibold">You stopped {difference} seconds too late!</h1>
+                  <h1 className="text-center text-xl font-semibold">
+                    You stopped {difference} seconds too late!
+                  </h1>
                 ) : (
-                  <h1 className="text-xl font-semibold">You stopped {difference} seconds too early!</h1>
+                  <h1 className="text-center text-xl font-semibold">
+                    You stopped {difference} seconds too early!
+                  </h1>
                 )}
               </div>
             )}
